@@ -76,7 +76,7 @@ if [ ! -d "$output_dir" ]; then
 		$PATH_TO_REF_GENOME \
 		$PATH_TO_READS/$read_1 $PATH_TO_READS/$read_2 > $output_dir/$read_id.unsorted.bam
 
-		samtools sort -@ $NB_THREADS $output_dir/$read_id.unsorted.bam $output_dir/$read_id.sorted.bam
+		samtools sort -@ $NB_THREADS $output_dir/$read_id.unsorted.bam > $output_dir/$read_id.sorted.bam
 		cd $output_dir && samtools index $read_id.sorted.bam && cd ..
 		break
 	done
