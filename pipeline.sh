@@ -72,7 +72,7 @@ if [ ! -d "$output_dir" ]; then
 		read_2=$read_id  #e.g. read_2=NA12707_R
 		read_2+="2.fastq.gz"  #e.g. read_2=NA12707_R2.fastq.gz
 
-		bwa mem -t $NB_THREADS -R '@RG\tID:'"$n"'\tLB:library\tPL:Illumina\tPU:lane'"$n"'\tSM:yeast' \
+		bwa mem -t $NB_THREADS -R '@RG\tID:'"$read_id"'\tLB:library\tPL:Illumina\tPU:lane\tSM:'"$read_id"'' \
 		$PATH_TO_REF_GENOME \
 		$PATH_TO_READS/$read_1 $PATH_TO_READS/$read_2 > $output_dir/$read_id.unsorted.bam
 
