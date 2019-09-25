@@ -15,7 +15,15 @@ RUN apt-get update && \
     unzip \
     less \
     bedtools \
-    samtools \
+    zlib1g-dev \
+    libbz2-dev \
+    libncurses5-dev \
+    libncursesw5-dev \
+    liblzma-dev \
+    gcc \
+    make \
+    libcurl4-openssl-dev \
+    libssl-dev \
     bwa \
     openjdk-8-jdk \
     tabix \
@@ -23,6 +31,27 @@ RUN apt-get update && \
     apt-get -y clean  && \
     apt-get -y autoclean  && \
     apt-get -y autoremove
+
+# Install htslib
+ADD https://github.com/samtools/htslib/releases/download/1.9/htslib-1.9.tar.bz2 /usr/local/htslib.tar.bz2
+RUN tar xvjf /usr/local/htslib.tar.bz2 -C /usr/local/ \
+     && chmod 777 -R /usr/local/htslib-1.9 \
+     && cd /usr/local/htslib-1.9 \
+     && ./configure \
+     && make \
+     && make install \
+     && rm /usr/local/htslib.tar.bz2
+
+# Install samtools
+ADD https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2 /usr/local/samtools.tar.bz2
+RUN tar xvjf /usr/local/samtools.tar.bz2 -C /usr/local/ \
+     && chmod 777 -R /usr/local/samtools-1.9 \
+     && cd /usr/local/samtools-1.9 \
+     && ./configure \
+     && make \
+     && make install \
+     && rm /usr/local/samtools.tar.bz2
+     
 
 # Install trimmomatic
 RUN mkdir -p /home/software/trimmomatic && \
