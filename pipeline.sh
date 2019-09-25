@@ -31,6 +31,7 @@ if [ ! -d "$output_dir" ]; then
 			$output_dir/$read_1 $output_dir/$read_1.unpaired \
 			$output_dir/$read_2 $output_dir/$read_2.unpaired \
 			LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15  MINLEN:36
+		break
 	done
 fi
 
@@ -77,7 +78,7 @@ if [ ! -d "$output_dir" ]; then
 
 		samtools sort -@ $NB_THREADS $output_dir/$read_id.unsorted.bam $output_dir/$read_id.sorted.bam
 		cd $output_dir && samtools index $read_id.sorted.bam && cd ..
-
+		break
 	done
 fi
 
