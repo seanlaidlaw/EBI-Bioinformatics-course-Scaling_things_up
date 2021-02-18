@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-PATH_TO_REF_GENOME=/data/extra_exercise_EBI_NGS_sept2019/rCRS.fa
-PATH_TO_READS=/data/extra_exercise_EBI_NGS_sept2019/fastq/
+PATH_TO_REF_GENOME=/data/rCRS.fa
+PATH_TO_READS=/data/fastq/
 NB_THREADS=4
 
 # set variables to our programs not in $PATH
