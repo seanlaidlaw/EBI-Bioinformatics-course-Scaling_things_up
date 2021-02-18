@@ -14,5 +14,5 @@ for R1_read in $(ls *R1.fastq.gz);do
 	R2_read="$(echo $R1_read | sed 's/R1/R2/g')" 
 
 	# align the reads
-	bwa mem rCRS.fa $R1_read $R2_read | samtools view -b - | samtools sort - -o $R1_read.bam"
+	echo "bwa mem rCRS.fa $R1_read $R2_read | samtools view -b - | samtools sort - -o $R1_read.bam" >> align_commands.sh
 done
