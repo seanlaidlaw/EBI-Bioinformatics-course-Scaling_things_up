@@ -78,15 +78,12 @@ if [ ! -d "$output_dir" ]; then
 
 		samtools sort -@ $NB_THREADS $output_dir/$read_id.unsorted.bam > $output_dir/$read_id.sorted.bam
 		cd $output_dir && samtools index $read_id.sorted.bam && cd ..
+		
+		# this is where the exercise begins
+		# You should add here inside this for loop, the command to convert the produced bam file to cram file
+		
+		# once you run this to make sure everything works, remove this break command
 		break
 	done
 fi
-
-
-
-# Use GATK for variant calling
-
-
-
-
 
